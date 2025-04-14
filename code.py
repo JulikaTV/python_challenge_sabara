@@ -26,7 +26,7 @@ login = {
 
 # Blocos de Códigos para Login
 
-def employ_client():
+ def employ_client():
 
     stats = input("Você é funcionário ou responsável? ->").strip().lower()
 
@@ -59,22 +59,33 @@ def pass_word():
 
     while True:
 
-        if
-        if password == login["senha"]:
-            print(login)
+        if password.isnumeric():
+            int(password)
 
-            print("Seja Bem Vindo!!!")
-            break
+            if password == login["senha"]:
+                print(login)
+
+                print("Seja Bem Vindo!!!")
+                break
+
+            else:
+                print("Senha incorreta!!!")
+                password = input("Digite a sua senha ->")
 
         else:
-            print("Senha incorreta!!!")
+
+            print("Por favor digite apenas números!!!")
             password = input("Digite a sua senha ->")
+
 
 def log_in():
 
     employ_client()
     log_email()
     pass_word()
+
 log_in()
 
 ########################################################################################################################
+
+def milk_or_lunch():
