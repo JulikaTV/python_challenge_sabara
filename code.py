@@ -88,4 +88,89 @@ log_in()
 
 ########################################################################################################################
 
-def milk_or_lunch():
+def clean_number(text):
+    # Ensures only valid numbers are returned
+    allowed = "0123456789."
+    cleaned = ''.join([char for char in text if char in allowed])
+    if cleaned == '' or cleaned == '.':
+        raise ValueError("Entrada inválida: nenhum número encontrado!")
+    return cleaned
+
+
+def quiz():
+    questions = [
+        "Qual o peso do bebê (kg)? ",
+        "Qual o comprimento/tamanho do bebê (cm)? ",
+        "Quantos dias de vida o bebê tem? ",
+        "Quantas mamadas por dia? "
+    ]
+
+    answers = []
+
+    for question in questions:
+        while True:
+            answer = input(question)
+            if answer.strip():  # If answer is not empty
+                answers.append(answer)
+                break
+            else:
+                print("Por favor, preencha este campo corretamente.")
+
+    return answers
+
+
+def calculate_lactary(data):
+    try:
+        # Extracting and converting the input data
+        weight = float(clean_number(data[0]))
+        length = float(clean_number(data[1]))  # Not used at the moment
+        age_days = int(clean_number(data[2]))  # Not used at the moment
+        feedings_per_day = int(clean_number(data[3]))
+
+        # Define a default volume per kg (for example, 150 ml/kg/day)
+        volume_per_kg = 150
+
+        # Volume calculation
+        total_volume_per_day = weight * volume_per_kg
+        volume_per_feeding = total_volume_per_day / feedings_per_day
+
+        return total_volume_per_day, volume_per_feeding
+    except IndexError:
+        raise ValueError("Todos os campos precisam ser preenchidos corretamente.")
+
+
+def choose_unit():
+    print("\nComo você gostaria de ver o resultado?")
+    print("(1) Mililitros (ml)")
+    print("(2) Litros (L)")
+
+    while True:
+        choice = input("Digite 1 ou 2: ")
+        if choice in ["1", "2"]:
+            return choice
+        else:
+            print("Opção inválida. Por favor, digite 1 ou 2.")
+
+
+def main():
+    print("=== Questionário do Lactário ===")
+    try:
+        baby_data = quiz()
+        total_volume, volume_feeding = calculate_lactary(baby_data)
+
+        unit = choose_unit()
+
+        print("\n=== Resultado do Cálculo ===")
+        if unit == "1":
+            print(f"Volume total por dia: {total_volume:.1f} ml")
+            print(f"Volume por mamada: {volume_feeding:.1f} ml")
+        else:
+            print(f"Volume total por dia: {total_volume / 1000:.3f} L")
+            print(f"Volume por mamada: {volume_feeding / 1000:.3f} L")
+
+    except ValueError as error:
+        print(f"Erro: {error}")
+
+
+if __name__ == "__main__":
+    main()
