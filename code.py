@@ -174,3 +174,34 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+########################################################################################################################
+def escolher():
+
+    resposta = input("Você deseja usar o [1]Cardapio Inteligente ou a [2]Calculadora de Lactario? (Por favor digite apenas o número das opções)\n ->")
+
+    if resposta == 1:
+
+        print("Seja Bem vinda!!!"
+              "Por favor responda o questionário:")
+
+        resposta == cardapio_inteligente()
+
+    elif resposta == 2:
+
+        print("Seja Bem vinda!!!"
+              "Por favor responda o questionário:")
+
+        resposta == calculadora_lactario()
+
+
+def cardapio_inteligente():
+
+    dic = {
+        
+        
+        
+    }
+
+
+
