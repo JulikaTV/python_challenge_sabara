@@ -26,7 +26,7 @@ login = {
 
 # Blocos de Códigos para Login
 
- def employ_client():
+def employ_client():
 
     stats = input("Você é funcionário ou responsável? ->").strip().lower()
 
@@ -59,33 +59,25 @@ def pass_word():
 
     while True:
 
-        if password.isnumeric():
-            int(password)
+        if
+        if password == login["senha"]:
+            print(login)
 
-            if password == login["senha"]:
-                print(login)
-
-                print("Seja Bem Vindo!!!")
-                break
-
-            else:
-                print("Senha incorreta!!!")
-                password = input("Digite a sua senha ->")
+            print("Seja Bem Vindo!!!")
+            break
 
         else:
-
-            print("Por favor digite apenas números!!!")
+            print("Senha incorreta!!!")
             password = input("Digite a sua senha ->")
-
 
 def log_in():
 
     employ_client()
     log_email()
     pass_word()
-
 log_in()
 
+<<<<<<< Updated upstream
 ########################################################################################################################
 
 def clean_number(text):
@@ -205,3 +197,6 @@ def cardapio_inteligente():
 
 
 
+=======
+########################################################################################################################
+>>>>>>> Stashed changes
