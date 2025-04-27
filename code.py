@@ -27,59 +27,53 @@ login = {
 # Blocos de Códigos para Login
 
 def employ_client():
+ def employ_client():
 
     stats = input("Você é funcionário ou responsável? ->").strip().lower()
 
-    while stats != "funcionario" and stats != "cliente":
-        print("Informação fora do exigido! Por favor escolha dentro das opções!")
-        stats = input("Você é funcionário ou responsável? ->").strip().lower()
 
 
-    else:
-        login["status"]  = stats
-        print(login["status"])
-
-def log_email():
-
-    log = input("Digite o seu email ->").strip().lower()
-
-    while True:
-
-        if log == login["email"]:
-            print(login["email"])
-            break
-
-        else:
-            print("Email inválido")
-            log = input("Digite o seu email ->").strip().lower()
-
-def pass_word():
-
-    password  = input("Digite a sua senha ->")
+@@ -59,22 +59,33 @@ def pass_word():
 
     while True:
 
         if
         if password == login["senha"]:
             print(login)
+        if password.isnumeric():
+            int(password)
 
             print("Seja Bem Vindo!!!")
             break
+            if password == login["senha"]:
+                print(login)
+
+                print("Seja Bem Vindo!!!")
+                break
+
+            else:
+                print("Senha incorreta!!!")
+                password = input("Digite a sua senha ->")
 
         else:
             print("Senha incorreta!!!")
+
+            print("Por favor digite apenas números!!!")
             password = input("Digite a sua senha ->")
+
 
 def log_in():
 
     employ_client()
     log_email()
     pass_word()
+
 log_in()
 
-<<<<<<< Updated upstream
+########################################################################################################################
 ########################################################################################################################
 
+ef milk_or_lunch():
 def clean_number(text):
     # Ensures only valid numbers are returned
     allowed = "0123456789."
@@ -169,8 +163,8 @@ if __name__ == "__main__":
 
 ########################################################################################################################
 def escolher():
-
-    resposta = input("Você deseja usar o [1]Cardapio Inteligente ou a [2]Calculadora de Lactario? (Por favor digite apenas o número das opções)\n ->")
+    resposta = input(
+        "Você deseja usar o [1]Cardapio Inteligente ou a [2]Calculadora de Lactario? (Por favor digite apenas o número das opções)\n ->")
 
     if resposta == 1:
 
@@ -188,15 +182,6 @@ def escolher():
 
 
 def cardapio_inteligente():
-
     dic = {
-        
-        
-        
+
     }
-
-
-
-=======
-########################################################################################################################
->>>>>>> Stashed changes
