@@ -8,286 +8,244 @@
 
 ########################################################################################################################
 
-print("Seja bem vindo ao NutriKids!!!")
+print("Seja bem-vindo ao NutriKids!!!")  # Exibe a mensagem de boas-vindas
 
-########################################################################################################################
-
-# Dicionário
-
+# Dicionário de login
 login = {
 
-    "status" : "",
-    "email" : "user@nutrikids.com.br",
-    "senha" : "1234",
+    "status": "",  # Armazena o status do usuário (funcionário ou responsável)
+    "email": "user@nutrikids.com.br",  # Email do usuário para login
+    "senha": "1234",  # Senha do usuário para login
 
-}
+    }
 
-########################################################################################################################
+# Dicionário de permissões
+permissions = {
 
-# Blocos de Códigos para Login
+    "funcionario": ["criar", "editar", "visualizar"],  # Permissões para o funcionário
+    "responsavel": ["visualizar"]  # Permissões para o responsável
+
+    }
+
+# Dicionário que armazena dados modificados pelo profissional
+dados_modificados = {
+
+    "nome_da_crianca": "",  # Nome da criança
+    "recomendacao": "",  # Tipo de recomendação
+    "volume_prescrito": "",  # Volume prescrito por mamada e por dia
+    "observacoes": ""  # Observações clínicas
+
+    }
+
+# ---------------------- Funções de Autenticação -----------------------
 
 def employ_client():
 
-    stats = input("Você é funcionário ou responsável? ->").strip().lower()
+    #Função para verificar se o usuário é funcionário ou responsável.
+    #Solicita ao usuário que informe o seu status e valida a resposta.
 
     while True:
-        if stats == 'funcionario' or stats == 'responsavel':
-            print(f'Seja Bem Vindo(a) {stats}\n')
-            login['status'] = stats
-            print(login)
 
-            break
+        stats = input("Você é funcionário ou responsável? -> ").strip().lower()  # Pergunta o status do usuário
+
+        if stats in ['funcionario', 'responsavel']:  # Se a resposta for válida
+            print(f"\nSeja bem-vindo(a), {stats}!\n")  # Mensagem de boas-vindas
+            login['status'] = stats  # Armazena o status do usuário no dicionário de login
+            break  # Sai do loop
 
         else:
-            print("Por favor digite apenas uma das opções apresentadas!")
-            stats = input("Você é Profissional ou Responsável? ->").strip().lower()
+            print("Por favor, digite apenas 'funcionário' ou 'responsável'.")  # Mensagem de erro
 
-employ_client()
+def log_email():
+
+    #Função para validar o email do usuário durante o login.
+    #Solicita que o usuário insira o seu email e verifica se é o correto.
+
+    while True:
+
+        email = input("Por favor, digite o seu email:\n-> ").strip()  # Solicita o email
+
+        if email == login["email"]:  # Verifica se o email está correto
+            print("\nEmail correto! Por favor, prossiga.\n")  # Mensagem de sucesso
+            break  # Sai do loop
+
+        else:
+            print("\nO email que você digitou está incorreto. Tente novamente.")  # Mensagem de erro
+
 def pass_word():
 
+    #Função para validar a senha do usuário durante o login.
+    #Solicita que o usuário insira a senha e verifica se é a correta.
+
     while True:
 
-        if password == login["senha"]:
-            print(login)
-        if password.isnumeric():
-            int(password)
+        password = input("Digite a sua senha -> ").strip()  # Solicita a senha
 
-            print("Seja Bem Vindo!!!")
-            break
-            if password == login["senha"]:
-                print(login)
+        if not password.isnumeric():  # Verifica se a senha contém apenas números
+            print("Por favor, digite apenas números!")  # Mensagem de erro
 
-                print("Seja Bem Vindo!!!")
-                break
-
-            else:
-                print("Senha incorreta!!!")
-                password = input("Digite a sua senha ->")
+        elif password == login["senha"]:  # Verifica se a senha está correta
+            print("Senha correta! Seja bem-vindo!!!")  # Mensagem de sucesso
+            break  # Sai do loop
 
         else:
-            print("Senha incorreta!!!")
-
-            print("Por favor digite apenas números!!!")
-            password = input("Digite a sua senha ->")
-
+            print("Senha incorreta! Tente novamente.")  # Mensagem de erro
 
 def log_in():
 
-    employ_client()
-    log_email()
-    pass_word()
+    #Função de login, chama as funções de autenticação para verificar o status do usuário, email e senha.
 
-log_in()
+    employ_client()  # Chama a função de autenticação de status
+    log_email()  # Chama a função de validação do email
+    pass_word()  # Chama a função de validação da senha
+    return permissions.get(login["status"], [])  # Retorna as permissões de acordo com o status do usuário
 
-########################################################################################################################
+def logout():
 
-# Escolha entre "Cardápio Inteligente" e "Calaculadora Inteligente"
+    #Função para realizar o logout do usuário, limpando o status.
 
-def choose_path():
+    print(f"\n{login['status'].capitalize()} desconectado com sucesso!\n")  # Mensagem de desconexão
+    login['status'] = ""  # Reseta o status do login
 
-    if login["status"] == 'profissional':
-        name = input("Digite o seu nome\n->")
-        print(f"Seja Bem Vindo novamente {name}")
-        choose()
+# ---------------------- Questionário e Cálculo -----------------------
 
-    else:
-        names = input("Digite o seu nome\n->")
-        print(f"Seja Bem Vindo {names}!!!")
-        view_menu() or view_lac()
+# Lista do questionário
+quiz_lac = [
 
-def choose():
+    ['Nome', ''],
+    ['Idade', 0],
+    ['Peso', 0.0],
+    ['Sexo', ''],
+    ['Tipo de Alimentação', ''],
+    ['Fórmula ( se aplicável )', ''],
+    ['Frequência de mamadas ( por dia )', 0],
+    ['observações Clínicas', '']
 
-    resposta = input("Você deseja usar o [1]Cardapio Inteligente ou a [2]Calculadora de Lactario? (Por favor digite apenas o número das opções)\n ->")
-
-    if resposta == 1:
-
-        print("Seja Bem vinda!!!"
-              "Por favor responda o questionário:")
-
-        resposta == cardapio_inteligente()
-
-    elif resposta == 2:
-
-        print("Seja Bem vinda!!!"
-              "Por favor responda o questionário:")
-
-        resposta == quiz()
-
-def clean_number(text):
-    # Ensures only valid numbers are returned
-    allowed = "0123456789."
-    cleaned = ''.join([char for char in text if char in allowed])
-    if cleaned == '' or cleaned == '.':
-        raise ValueError("Entrada inválida: nenhum número encontrado!")
-    return cleaned
-
+]
 
 def quiz():
-    questions = [
-        "Qual o peso do bebê (kg)? ",
-        "Qual o comprimento/tamanho do bebê (cm)? ",
-        "Quantos dias de vida o bebê tem? ",
-        "Quantas mamadas por dia? "
-    ]
 
-questionss = {
+    #Função que solicita e preenche as informações do questionário.
+    #Recebe dados como nome, idade, peso, tipo de alimentação, entre outros.
 
-    'peso' : '',
-    'tamanho' : '',
-    'dias de vida' : '',
-    'mamadas' : '',
+    for i in range(len(quiz_lac)):
 
-    }
-
-    answers = []
-
-    for question in questions:
         while True:
-            answer = input(question)
-            if answer.strip():  # If answer is not empty
-                answers.append(answer)
-                break
+
+            resposta = input(f"{quiz_lac[i][0]}: ").strip()  # Solicita uma resposta para cada campo do questionário
+
+            if resposta:  # Verifica se a resposta não está vazia
+
+                # Converte os dados de acordo com o tipo do campo
+                if quiz_lac[i][0] == 'Idade':
+                    quiz_lac[i][1] = int(resposta)  # Converte a resposta para inteiro
+
+                elif quiz_lac[i][0] == 'Peso':
+                    quiz_lac[i][1] = float(resposta)  # Converte a resposta para float
+
+                elif quiz_lac[i][0] == 'Frequência de mamadas ( por dia )':
+                    quiz_lac[i][1] = int(resposta)  # Converte a resposta para inteiro
+
+                else:
+                    quiz_lac[i][1] = resposta  # Armazena a resposta como string
+                break  # Sai do loop
+
             else:
-                print("Por favor, preencha este campo corretamente.")
-
-    return answers
-
-
-def calculate_lactary(data):
-    try:
-        # Extracting and converting the input data
-        weight = float(clean_number(data[0]))
-        length = float(clean_number(data[1]))  # Not used at the moment
-        age_days = int(clean_number(data[2]))  # Not used at the moment
-        feedings_per_day = int(clean_number(data[3]))
-
-        # Define a default volume per kg (for example, 150 ml/kg/day)
-        volume_per_kg = 150
-
-        # Volume calculation
-        total_volume_per_day = weight * volume_per_kg
-        volume_per_feeding = total_volume_per_day / feedings_per_day
-
-        return total_volume_per_day, volume_per_feeding
-    except IndexError:
-        raise ValueError("Todos os campos precisam ser preenchidos corretamente.")
-
+                print("Por favor, preencha este campo corretamente.")  # Mensagem de erro se o campo estiver vazio
 
 def choose_unit():
-    print("\nComo você gostaria de ver o resultado?")
-    print("(1) Mililitros (ml)")
-    print("(2) Litros (L)")
+
+    #Função para que o usuário escolha a unidade de medida para o volume.
+    #Oferece a opção de escolher entre mililitros (ml) ou litros (L).
+
+    print("\nComo você gostaria de ver o resultado?")  # Exibe a pergunta sobre a unidade de medida
+    print("(1) Mililitros (ml)")  # Opção 1: mililitros
+    print("(2) Litros (L)")  # Opção 2: litros
 
     while True:
-        choice = input("Digite 1 ou 2: ")
-        if choice in ["1", "2"]:
-            return choice
-        else:
-            print("Opção inválida. Por favor, digite 1 ou 2.")
+        choice = input("Digite 1 ou 2: ")  # Solicita a escolha do usuário
 
+        if choice in ["1", "2"]:  # Verifica se a escolha é válida
+            return choice  # Retorna a escolha do usuário
+
+        else:
+            print("Opção inválida. Por favor, digite 1 ou 2.")  # Mensagem de erro para escolha inválida
+
+def calculate_lactary(unit_choice):
+
+    #Função que realiza o cálculo do volume diário e por mamada, baseado no peso e idade da criança.
+    #O cálculo pode ser realizado em mililitros (ml) ou litros (L), conforme a escolha do usuário.
+
+    print("\n=== Cálculo de Volume para Lactário ===\n")  # Exibe o título do cálculo
+
+    idade = quiz_lac[1][1]  # Acessa a idade da criança
+    peso = quiz_lac[2][1]  # Acessa o peso da criança
+    mamadas = quiz_lac[6][1]  # Acessa a quantidade de mamadas
+    fator_ml_kg = 130 if idade <= 1 else 150  # Define o fator de cálculo com base na idade da criança
+    volume_diario = peso * fator_ml_kg  # Calcula o volume diário com base no peso e fator
+    volume_por_mamada = volume_diario / mamadas  # Calcula o volume por mamada
+
+    # Ajusta a unidade de medida com base na escolha do usuário
+    if unit_choice == "2":
+        volume_diario /= 1000  # Converte de ml para L
+        volume_por_mamada /= 1000  # Converte de ml para L
+        unidade = "L"  # Define unidade como litros
+
+    else:
+        unidade = "ml"  # Define unidade como mililitros
+
+    # Exibe o resultado do cálculo
+    print("\n=== Resultado do Cálculo ===")
+    print(f"Tipo de alimentação: {quiz_lac[4][1]}")
+    print(f"Peso: {peso:.2f} kg")  # Exibe o peso da criança
+    print(f"Idade: {idade} meses")  # Exibe a idade da criança
+    print(f"Volume total por dia: {volume_diario:.2f} {unidade}")  # Exibe o volume total diário
+    print(f"Volume por mamada: {volume_por_mamada:.2f} {unidade}")  # Exibe o volume por mamada
+
+    if quiz_lac[7][1].strip():  # Verifica se há observações clínicas
+        print(f"Observações clínicas: {quiz_lac[7][1]}")  # Exibe as observações clínicas
+
+    else:
+        print("Sem observações clínicas.")  # Caso não haja observações clínicas
+
+    # Armazena os dados modificados
+    dados_modificados["nome_da_crianca"] = quiz_lac[0][1]
+    dados_modificados["recomendacao"] = f"{quiz_lac[4][1]} / Fórmula: {quiz_lac[5][1]}"
+    dados_modificados["volume_prescrito"] = f"{volume_por_mamada:.2f} {unidade} por mamada / {volume_diario:.2f} {unidade} por dia"
+    dados_modificados["observacoes"] = quiz_lac[7][1]
 
 def main_lac():
-    print("=== Questionário do Lactário ===")
-    try:
-        baby_data = quiz()
-        total_volume, volume_feeding = calculate_lactary(baby_data)
 
-        unit = choose_unit()
+    #Função principal para a realização do questionário e cálculo do lactário.
 
-        print("\n=== Resultado do Cálculo ===")
-        if unit == "1":
-            print(f"Volume total por dia: {total_volume:.1f} ml")
-            print(f"Volume por mamada: {volume_feeding:.1f} ml")
+    quiz()  # Chama a função do questionário
+    unit_choice = choose_unit()  # Chama a função para escolher a unidade
+    calculate_lactary(unit_choice)  # Chama a função de cálculo
+
+# ---------------------- Visualização e Menu -----------------------
+
+def view_res():
+    #Função para visualização dos resultados pelo responsável.
+    #Exibe os dados modificados pelo funcionário.
+
+    print("\n=== VISUALIZAÇÃO DO RESPONSÁVEL ===\n")
+
+    if dados_modificados["nome_da_crianca"]:  # Verifica se há dados preenchidos
+        print(f"Criança: {dados_modificados['nome_da_crianca']}")  # Exibe o nome da criança
+        print(f"Recomendação: {dados_modificados['recomendacao']}")  # Exibe a recomendação
+        print(f"Volume prescrito: {dados_modificados['volume_prescrito']}")  # Exibe o volume prescrito
+
+        if dados_modificados["observacoes"]:  # Verifica se há observações clínicas
+            print(f"Observações clínicas: {dados_modificados['observacoes']}")  # Exibe as observações clínicas
+
         else:
-            print(f"Volume total por dia: {total_volume / 1000:.3f} L")
-            print(f"Volume por mamada: {volume_feeding / 1000:.3f} L")
+            print("Sem observações clínicas.")  # Caso não haja observações clínicas
 
-    except ValueError as error:
-        print(f"Erro: {error}")
+    else:
+        print("Nenhuma recomendação disponível ainda. Aguarde o profissional preencher os dados.")  # Mensagem caso não haja dados
 
+def choose_path(user_permissions):
 
-if __name__ == "__main__":
-    main_lac()
-
-########################################################################################################################
-
-########################################################################################################################
-
-# Lista para o Cardápio Inteligente
-
-data_quest = {
-
-    'nome' : '',
-    'idade' : '',
-    'peso' : '',
-    'sexo' : '',
-    'nível de atividade' : '',
-    'restrições alimentares' : '',
-    'observações adicionais' : '',
-
-    }
-
-cardapio_sucos_sobremesas = [
-
-    'maçã com uva',
-    'mamão',
-    'banana prata com aveia',
-    'manga',
-    'pera com ameixa',
-    'abacate',
-    'maçã ou pera',
-    'banana prata',
-    'goiaba',
-
-    ]
-
-cardapio_hospital = [
-
-    'canja',
-    'caldinho de feijão com letrinhas',
-    'massinha com caldo de carne',
-    'creme de mandioquinha',
-    'abobrinha com espinafre',
-    'caldo verde',
-    'alho poró com caldo de carne',
-    'madioca com caldo e carne',
-    'legumes com frango/carne',
-    'abóbora com carne',
-
-    ]
-
-restrições_batata = [
-
-    'abobrinha com espinafre',
-    'legumes com carne/frango',
-
-    ]
-
-restricoes_frango = [
-
-    'canja',
-    'legumes com frango/carne',
-
-    ]
-restricoes_cebola = [
-
-    'canja',
-    'massinha com caldo de carne',
-    'caldinho de feijão com letrinhas',
-    'abobrinha com espinafre',
-    'caldo verde',
-    'alho poró com caldo de carne',
-    'mandioquinha com caldo e carne',
-    'abobora com carne',
-
-    ]
-
-restricoes_massa = [
-
-    'massinha com caldo de carne',
-    'caldinho de feijão com letrinhas',
-
-    ]
-
-def cardapio_inteligente():
-
+    #Função para decidir o caminho do usuário, baseado nas permissões.
+    #Caso tenha permissão de 'criar' ou 'editar', permite o uso da calculadora.
+    #Caso tenha apenas permissão
