@@ -225,6 +225,7 @@ def main_lac():
 # ---------------------- Visualização e Menu -----------------------
 
 def view_res():
+
     #Função para visualização dos resultados pelo responsável.
     #Exibe os dados modificados pelo funcionário.
 
@@ -246,6 +247,46 @@ def view_res():
 
 def choose_path(user_permissions):
 
-    #Função para decidir o caminho do usuário, baseado nas permissões.
-    #Caso tenha permissão de 'criar' ou 'editar', permite o uso da calculadora.
-    #Caso tenha apenas permissão
+    # Função para decidir o caminho do usuário, baseado nas permissões.
+    # Caso tenha permissão de 'criar' ou 'editar', permite o uso da calculadora.
+    # Caso tenha apenas permissão de 'visualizar', mostra os dados preenchidos pelo profissional.
+
+    while True:
+        print("\n=== MENU ===")
+        if 'criar' in user_permissions or 'editar' in user_permissions:
+            print("(1) Preencher questionário e calcular volume")  # opção do funcionário
+        if 'visualizar' in user_permissions:
+            print("(2) Visualizar recomendações")  # opção do responsável
+
+        print("(3) Logout")  # opção para sair
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1" and ('criar' in user_permissions or 'editar' in user_permissions):
+            main_lac()  # Executa a calculadora
+
+        elif opcao == "2" and 'visualizar' in user_permissions:
+            view_res()  # Exibe os dados salvos
+
+        elif opcao == "3":
+            logout()  # Faz o logout
+            break  # Sai do loop e finaliza o programa
+
+        else:
+            print("Opção inválida ou não permitida. Tente novamente.")  # Caso a opção seja inválida
+
+# ---------------------- Execução Principal -----------------------
+
+def main():
+    while True:
+        permissoes = log_in()  # Realiza o login e retorna as permissões
+        choose_path(permissoes)  # Executa o menu baseado nas permissões
+
+        sair = input("Deseja sair do sistema? (s/n): ").strip().lower()
+        if sair == "s":
+            print("Encerrando o sistema... Até logo!")
+            break
+
+# Executa o programa
+if __name__ == "__main__":
+    main()
