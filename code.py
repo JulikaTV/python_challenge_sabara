@@ -27,17 +27,26 @@ login = {
 # Blocos de Códigos para Login
 
 def employ_client():
- def employ_client():
 
     stats = input("Você é funcionário ou responsável? ->").strip().lower()
 
+    while True:
+        if stats == 'funcionario' or stats == 'responsavel':
+            print(f'Seja Bem Vindo(a) {stats}\n')
+            login['status'] = stats
+            print(login)
 
+            break
 
-@@ -59,22 +59,33 @@ def pass_word():
+        else:
+            print("Por favor digite apenas uma das opções apresentadas!")
+            stats = input("Você é Profissional ou Responsável? ->").strip().lower()
+
+employ_client()
+def pass_word():
 
     while True:
 
-        if
         if password == login["senha"]:
             print(login)
         if password.isnumeric():
@@ -71,9 +80,39 @@ def log_in():
 log_in()
 
 ########################################################################################################################
-########################################################################################################################
 
-ef milk_or_lunch():
+# Escolha entre "Cardápio Inteligente" e "Calaculadora Inteligente"
+
+def choose_path():
+
+    if login["status"] == 'profissional':
+        name = input("Digite o seu nome\n->")
+        print(f"Seja Bem Vindo novamente {name}")
+        choose()
+
+    else:
+        names = input("Digite o seu nome\n->")
+        print(f"Seja Bem Vindo {names}!!!")
+        view_menu() or view_lac()
+
+def choose():
+
+    resposta = input("Você deseja usar o [1]Cardapio Inteligente ou a [2]Calculadora de Lactario? (Por favor digite apenas o número das opções)\n ->")
+
+    if resposta == 1:
+
+        print("Seja Bem vinda!!!"
+              "Por favor responda o questionário:")
+
+        resposta == cardapio_inteligente()
+
+    elif resposta == 2:
+
+        print("Seja Bem vinda!!!"
+              "Por favor responda o questionário:")
+
+        resposta == quiz()
+
 def clean_number(text):
     # Ensures only valid numbers are returned
     allowed = "0123456789."
@@ -90,6 +129,15 @@ def quiz():
         "Quantos dias de vida o bebê tem? ",
         "Quantas mamadas por dia? "
     ]
+
+questionss = {
+
+    'peso' : '',
+    'tamanho' : '',
+    'dias de vida' : '',
+    'mamadas' : '',
+
+    }
 
     answers = []
 
@@ -138,7 +186,7 @@ def choose_unit():
             print("Opção inválida. Por favor, digite 1 ou 2.")
 
 
-def main():
+def main_lac():
     print("=== Questionário do Lactário ===")
     try:
         baby_data = quiz()
@@ -159,29 +207,87 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main_lac()
 
 ########################################################################################################################
-def escolher():
-    resposta = input(
-        "Você deseja usar o [1]Cardapio Inteligente ou a [2]Calculadora de Lactario? (Por favor digite apenas o número das opções)\n ->")
 
-    if resposta == 1:
+########################################################################################################################
 
-        print("Seja Bem vinda!!!"
-              "Por favor responda o questionário:")
+# Lista para o Cardápio Inteligente
 
-        resposta == cardapio_inteligente()
+data_quest = {
 
-    elif resposta == 2:
-
-        print("Seja Bem vinda!!!"
-              "Por favor responda o questionário:")
-
-        resposta == calculadora_lactario()
-
-
-def cardapio_inteligente():
-    dic = {
+    'nome' : '',
+    'idade' : '',
+    'peso' : '',
+    'sexo' : '',
+    'nível de atividade' : '',
+    'restrições alimentares' : '',
+    'observações adicionais' : '',
 
     }
+
+cardapio_sucos_sobremesas = [
+
+    'maçã com uva',
+    'mamão',
+    'banana prata com aveia',
+    'manga',
+    'pera com ameixa',
+    'abacate',
+    'maçã ou pera',
+    'banana prata',
+    'goiaba',
+
+    ]
+
+cardapio_hospital = [
+
+    'canja',
+    'caldinho de feijão com letrinhas',
+    'massinha com caldo de carne',
+    'creme de mandioquinha',
+    'abobrinha com espinafre',
+    'caldo verde',
+    'alho poró com caldo de carne',
+    'madioca com caldo e carne',
+    'legumes com frango/carne',
+    'abóbora com carne',
+
+    ]
+
+restrições_batata = [
+
+    'abobrinha com espinafre',
+    'legumes com carne/frango',
+
+    ]
+
+restricoes_frango = [
+
+    'canja',
+    'legumes com frango/carne',
+
+    ]
+restricoes_cebola = [
+
+    'canja',
+    'massinha com caldo de carne',
+    'caldinho de feijão com letrinhas',
+    'abobrinha com espinafre',
+    'caldo verde',
+    'alho poró com caldo de carne',
+    'mandioquinha com caldo e carne',
+    'abobora com carne',
+
+    ]
+
+restricoes_massa = [
+
+    'massinha com caldo de carne',
+    'caldinho de feijão com letrinhas',
+
+    ]
+
+def cardapio_inteligente():
+
