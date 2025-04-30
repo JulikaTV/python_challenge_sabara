@@ -32,9 +32,15 @@ Este é um projeto composto por duas etapas: a primeira com a calculadora de lac
   
 <hr>
 
-**Vídeo Explicando o Projeto🚑**
+**𝘝𝘪́𝘥𝘦𝘰 𝘌𝘹𝘱𝘭𝘪𝘤𝘢𝘯𝘥𝘰 𝘰 𝘗𝘳𝘰𝘫𝘦𝘵𝘰🚑**
 
 - https://youtu.be/JzZSrZDvTzc
+
+<hr>
+
+**𝘋𝘪𝘢𝘨𝘳𝘢𝘮𝘢 𝘥𝘰 𝘗𝘳𝘰𝘫𝘦𝘵𝘰🚑**
+
+- ![image](https://github.com/user-attachments/assets/2febe75b-6781-47a5-add9-13ed9441515c)
 
 <hr>
 
