@@ -32,6 +32,12 @@ Este é um projeto composto por duas etapas: a primeira com a calculadora de lac
   
 <hr>
 
+**Vídeo Explicando o Projeto🚑**
+
+- https://youtu.be/JzZSrZDvTzc
+
+<hr>
+
 **𝘊𝘰𝘮𝘰 𝘌𝘹𝘦𝘤𝘶𝘵𝘢𝘳 𝘰 𝘗𝘳𝘰𝘫𝘦𝘵𝘰🚑**  
 
 1. Copie o códgo apresentado quando apertar o botão "<> Code"
