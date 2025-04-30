@@ -55,14 +55,6 @@ Este é um projeto composto por duas etapas: a primeira com a calculadora de lac
 - 𝙼𝚊𝚛𝚒𝚊 𝙴𝚍𝚞𝚊𝚛𝚍𝚊 𝙵𝚎𝚛𝚛𝚎́𝚜   560418
 - 𝙶𝚒𝚝𝙷𝚞𝚋    https://github.com/dudaferres
 - 𝙻𝚒𝚗𝚔𝚎𝚍𝚒𝚗   https://www.linkedin.com/in/mariaeduardaferres/
-  
-<hr>
-
-**𝘋𝘦𝘴𝘦𝘯𝘷𝘰𝘭𝘷𝘦𝘥𝘰𝘳𝘢 𝘥𝘰 C𝘰́𝘥𝘪𝘨𝘰🚑**
-
-- 𝙹𝚞𝚕𝚒𝚊 𝚂𝚊𝚢𝚞𝚛𝚒 𝚈𝚘𝚔𝚘𝚘    560541
-- 𝙶𝚒𝚝𝙷𝚞𝚋    https://github.com/JulikaTV
-- 𝙻𝚒𝚗𝚔𝚎𝚍𝚒𝚗   https://www.linkedin.com/in/julia-yokoo-491797215/
 
 <hr>
 
